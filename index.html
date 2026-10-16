@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#176b43">
+    <title>Smart AI Crop Health | Brinjal Care</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="brand">
+            <div class="brand-icon">🌱</div>
+            <div>
+                <h2>CropCare AI</h2>
+                <small>Smart crop health</small>
+            </div>
+        </div>
+
+        <nav class="navigation">
+            <button class="nav-link active" data-tab="home">🏠 <span data-i18n="home">Dashboard</span></button>
+            <button class="nav-link" data-tab="scan">📷 <span data-i18n="scan">Scan Brinjal</span></button>
+            <button class="nav-link" data-tab="history">🕘 <span data-i18n="history">Scan History</span></button>
+            <button class="nav-link" data-tab="assistant">💬 <span data-i18n="assistant">Crop Assistant</span></button>
+            <button class="nav-link" data-tab="diseases">🌿 <span data-i18n="diseases">Disease Guide</span></button>
+            <button class="nav-link" data-tab="profile">👤 <span data-i18n="profile">My Profile</span></button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <button class="nav-link" id="themeToggle">🌙 <span data-i18n="theme">Toggle Theme</span></button>
+            <button class="nav-link" id="logoutButton">↪️ <span data-i18n="logout">Log Out</span></button>
+            <p class="sidebar-note">🌾 Better care, healthier crops.</p>
+        </div>
+    </aside>
+
+    <!-- MAIN AREA -->
+    <main class="main-area">
+        <header class="topbar">
+            <button class="menu-button" id="menuButton" aria-label="Toggle menu">☰</button>
+            <div>
+                <strong>Smart AI Crop Health</strong>
+                <small class="topbar-subtitle">Brinjal Edition</small>
+            </div>
+            <select id="languageSelect" aria-label="Choose language">
+                <option value="en">English</option>
+                <option value="hi">हिन्दी</option>
+                <option value="mr">मराठी</option>
+            </select>
+        </header>
+
+        <!-- LOGIN PAGE -->
+        <section id="authPage" class="auth-layout">
+            <div class="auth-intro">
+                <span class="eyebrow">🌱 SMART AGRICULTURE</span>
+                <h1>Healthy crops.<br><span>Better tomorrow.</span></h1>
+                <p>A simple crop-health companion designed especially for brinjal growers.</p>
+                <div class="auth-illustration">🍆 🌿 🌱</div>
+                <p class="muted">Explore crop information, upload leaf images and maintain your scan history.</p>
+            </div>
+
+            <div class="auth-card">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" id="showLogin">Login</button>
+                    <button class="auth-tab" id="showRegister">Register</button>
+                </div>
+
+                <form id="loginForm">
+                    <h2>Welcome back 👋</h2>
+                    <p class="muted">Log in to your local demo account.</p>
+
+                    <label for="loginIdentity">Email or phone</label>
+                    <input id="loginIdentity" type="text" required placeholder="Enter email or phone">
+
+                    <label for="loginPassword">Password</label>
+                    <input id="loginPassword" type="password" required placeholder="Enter password">
+
+                    <button class="primary-button full-width" type="submit">Login</button>
+                    <p id="loginMessage" class="form-message" aria-live="polite"></p>
+                </form>
+
+                <form id="registerForm" class="hidden">
+                    <h2>Create your account 🌱</h2>
+                    <p class="muted">Create an account on this browser.</p>
+
+                    <label for="registerName">Full name</label>
+                    <input id="registerName" required placeholder="Enter your name">
+
+                    <label for="registerIdentity">Email or phone</label>
+                    <input id="registerIdentity" type="text" required placeholder="Enter email or phone">
+
+                    <label for="registerPassword">Password</label>
+                    <input id="registerPassword" type="password" minlength="6" required placeholder="At least 6 characters">
+
+                    <button class="primary-button full-width" type="submit">Create Account</button>
+                    <p id="registerMessage" class="form-message" aria-live="polite"></p>
+                </form>
+
+                <p class="demo-warning"></p>
+            </div>
+        </section>
+
+        <!-- APPLICATION -->
+        <div id="appPage" class="hidden">
+
+            <!-- DASHBOARD -->
+            <section id="homeTab" class="tab-content">
+                <div class="welcome-banner">
+                    <div>
+                        <span class="eyebrow">YOUR FARM, YOUR CARE</span>
+                        <h1 id="welcomeName">Welcome 👋</h1>
+                        <p>Let's take better care of your brinjal plants.</p>
+                        <button class="primary-button" data-go="scan">Scan a Leaf →</button>
+                    </div>
+                    <div class="banner-emoji" aria-hidden="true">🍆🌿</div>
+                </div>
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Crop overview</h2>
+                        <p class="muted">Your saved demo scan activity</p>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <article class="stat-card">
+                        <span class="stat-icon">📷</span>
+                        <p>Total scans</p>
+                        <h2 id="totalScans">0</h2>
+                    </article>
+                    <article class="stat-card">
+                        <span class="stat-icon">🌿</span>
+                        <p>Healthy demo results</p>
+                        <h2 id="healthyScans">0</h2>
+                    </article>
+                    <article class="stat-card">
+                        <span class="stat-icon">🔎</span>
+                        <p>Needs attention</p>
+                        <h2 id="attentionScans">0</h2>
+                    </article>
+                </div>
+
+                <div class="content-card">
+                    <div class="section-heading">
+                        <div>
+                            <h2>Recent scans</h2>
+                            <p class="muted">Your latest activity on this browser</p>
+                        </div>
+                        <button class="text-button" data-go="history">View all →</button>
+                    </div>
+                    <div id="recentScans" class="scan-list">
+                        <p class="empty-state">Your scan history will appear here.</p>
+                    </div>
+                </div>
+
+                <div class="content-card tip-card">
+                    <span class="stat-icon">💡</span>
+                    <div>
+                        <h3>Today's crop-care tip</h3>
+                        <p>Inspect both sides of brinjal leaves regularly. Look for spots, yellowing, pests and unusual wilting.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SCANNER -->
+            <section id="scanTab" class="tab-content hidden">
+                <div class="page-heading">
+                    <span class="eyebrow">IMAGE ANALYSIS DEMO</span>
+                    <h1>Brinjal leaf scanner 🍆</h1>
+                    <p>Upload a clear image of a brinjal leaf to preview the demo workflow.</p>
+                </div>
+
+                <div class="scanner-layout">
+                    <div class="content-card">
+                        <h2>Upload leaf image</h2>
+                        <p class="muted">Use a clear, well-lit photo of one leaf or plant.</p>
+
+                        <label class="upload-area" for="imageInput" id="uploadArea">
+                            <span class="upload-icon">📸</span>
+                            <strong>Click to choose an image</strong>
+                            <span>JPG, PNG or WEBP · Max 5 MB</span>
+                            <input id="imageInput" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+                        </label>
+
+                        <div id="imagePreviewBox" class="preview-box hidden">
+                            <img id="imagePreview" alt="Selected brinjal leaf preview">
+                            <button id="removeImage" class="secondary-button" type="button">Remove image</button>
+                        </div>
+
+                        <button id="analyzeButton" class="primary-button full-width" type="button">Show Demo Analysis</button>
+                        <p class="demo-warning">
+
+                    <div class="content-card result-card">
+                        <span class="result-symbol">🔬</span>
+                        <h2>Analysis result</h2>
+                        <p class="muted">Your sample result will appear here.</p>
+
+                        <div id="analysisResult" class="result-details hidden">
+                            <span class="result-label">DEMO RESULT</span>
+                            <h3 id="resultDisease">—</h3>
+                            <p><strong>Crop:</strong> Brinjal</p>
+                            <p><strong>Status:</strong> <span id="resultStatus">—</span></p>
+                            <p id="resultAdvice"></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HISTORY -->
+            <section id="historyTab" class="tab-content hidden">
+                <div class="page-heading">
+                    <h1>Scan history 🕘</h1>
+                    <p>Review the sample analyses saved in your browser.</p>
+                </div>
+                <div class="content-card">
+                    <div class="section-heading">
+                        <h2>All scans</h2>
+                        <button class="secondary-button" id="clearHistory">Clear history</button>
+                    </div>
+                    <div id="historyList" class="scan-list">
+                        <p class="empty-state">No scans yet.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ASSISTANT -->
+            <section id="assistantTab" class="tab-content hidden">
+                <div class="page-heading">
+                    <h1>Crop care assistant 💬</h1>
+                    <p>Explore general brinjal-care guidance through this offline demo.</p>
+                </div>
+
+                <div class="content-card chat-card">
+                    <div id="chatMessages" class="chat-messages" aria-live="polite">
+                        <div class="bot-message">Namaste! 🌱 Ask me a question about brinjal leaves, watering or common crop symptoms.</div>
+                    </div>
+                    <div class="suggestion-list">
+                        <button class="suggestion" data-question="Why are my brinjal leaves yellow?">Yellow leaves</button>
+                        <button class="suggestion" data-question="What are common brinjal leaf diseases?">Leaf diseases</button>
+                        <button class="suggestion" data-question="How should I water brinjal plants?">Watering tips</button>
+                    </div>
+                    <form id="chatForm" class="chat-form">
+                        <input id="chatInput" placeholder="Ask about brinjal care..." autocomplete="off" required>
+                        <button class="primary-button" type="submit">Send</button>
+                    </form>
+                    <p class="demo-warning">This assistant uses preset responses. It is not connected to a live AI model.</p>
+                </div>
+            </section>
+
+            <!-- DISEASE GUIDE -->
+            <section id="diseasesTab" class="tab-content hidden">
+                <div class="page-heading">
+                    <h1>Brinjal disease guide 🌿</h1>
+                    <p>Learn about common symptoms. Similar symptoms can have different causes.</p>
+                </div>
+
+                <div class="disease-grid">
+                    <article class="disease-card">
+                        <div class="disease-emoji">🌱</div>
+                        <h3>Healthy plant</h3>
+                        <p>Leaves are generally green and firm, with no obvious unusual spots or wilting.</p>
+                        <span class="status-pill healthy">Reference category</span>
+                    </article>
+                    <article class="disease-card">
+                        <div class="disease-emoji">🥀</div>
+                        <h3>Bacterial wilt</h3>
+                        <p>Rapid wilting can occur while leaves remain attached. Confirm the cause before treatment.</p>
+                        <span class="status-pill attention">Needs expert confirmation</span>
+                    </article>
+                    <article class="disease-card">
+                        <div class="disease-emoji">🍃</div>
+                        <h3>Leaf spot</h3>
+                        <p>Leaves may develop brown or grey spots and yellowing. Several diseases can cause similar marks.</p>
+                        <span class="status-pill attention">Inspect symptoms</span>
+                    </article>
+                    <article class="disease-card">
+                        <div class="disease-emoji">🍆</div>
+                        <h3>Phomopsis blight / fruit rot</h3>
+                        <p>May affect leaves, stems and fruits, causing lesions or fruit decay.</p>
+                        <span class="status-pill attention">Inspect plant and fruit</span>
+                    </article>
+                </div>
+                <p class="demo-warning">This guide is educational. Don't rely on an image alone to choose a pesticide or treatment.</p>
+            </section>
+
+            <!-- PROFILE -->
+            <section id="profileTab" class="tab-content hidden">
+                <div class="page-heading">
+                    <h1>My profile 👤</h1>
+                    <p>Update your local demo profile.</p>
+                </div>
+
+                <div class="content-card profile-card">
+                    <div class="avatar">👩‍🌾</div>
+                    <form id="profileForm">
+                        <label for="profileNameInput">Full name</label>
+                        <input id="profileNameInput" required>
+
+                        <label for="profileIdentityInput">Email or phone</label>
+                        <input id="profileIdentityInput" required>
+
+                        <label for="profileLanguage">Preferred language</label>
+                        <select id="profileLanguage">
+                            <option value="en">English</option>
+                            <option value="hi">Hindi</option>
+                            <option value="mr">Marathi</option>
+                        </select>
+
+                        <button class="primary-button full-width" type="submit">Save profile</button>
+                        <p id="profileMessage" class="form-message" aria-live="polite"></p>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <footer class="footer">
+            <p>🌱 Smart AI Crop Health · Brinjal Edition</p>
+            
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
